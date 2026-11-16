@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="http://jelix.org/ns/module/1.0">
+    <info id="realtime@lizmap-realtime" name="realtime" createdate="2026-11-15">
+        <version date="2026-11-15">1.0.0</version>
+        <label lang="en_US">Realtime layers</label>
+        <label lang="it_IT">Livelli in tempo reale</label>
+        <description lang="it_IT">Configurazione e dati dei livelli in tempo reale, con i permessi di Lizmap.</description>
+        <license URL="http://www.mozilla.org/MPL/">Mozilla Public License</license>
+    </info>
+    <dependencies>
+        <module name="lizmap" minversion="3.8.0" maxversion="3.*"/>
+    </dependencies>
+    <autoload>
+        <namespacePathMap name="Realtime" dir="lib/"/>
+    </autoload>
+</module>

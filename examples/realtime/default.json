@@ -1,0 +1,169 @@
+{
+  "version": 1,
+  "defaults": {
+    "interval": 30,
+    "crs": "EPSG:4326",
+    "visible": false
+  },
+  "projections": {
+    "EPSG:3003": "+proj=tmerc +lat_0=0 +lon_0=9 +k=0.9996 +x_0=1500000 +y_0=0 +ellps=intl +towgs84=-104.1,-49.1,-9.9,0.971,-2.917,0.714,-11.68 +units=m +no_defs +type=crs"
+  },
+  "groups": [
+    {
+      "id": "mobilita",
+      "title": "Mobilità in tempo reale",
+      "expanded": true,
+      "layers": [
+        {
+          "id": "bus",
+          "title": "Bus TPL",
+          "plugin": "bus",
+          "visible": true,
+          "themes": [
+            "Mobilità"
+          ],
+          "metadata": {
+            "abstract": "Posizione dei bus del trasporto pubblico locale, con linea, direzione e itinerario.",
+            "source": "Regione Toscana – GTFS-RT",
+            "license": "Vedi condizioni d'uso della fonte",
+            "url": "https://dati.toscana.it/"
+          }
+        },
+        {
+          "id": "demo",
+          "title": "Veicoli di prova",
+          "groups": [
+            "admins"
+          ],
+          "source": "demo",
+          "interval": 10,
+          "crs": "EPSG:4326",
+          "visible": true,
+          "maxScaleDenominator": 100000,
+          "themes": [
+            "Mobilità",
+            "Prova"
+          ],
+          "style": {
+            "radius": 7,
+            "rotateBy": "heading",
+            "colorBy": {
+              "field": "stato",
+              "values": {
+                "in servizio": "#0066CC",
+                "fermo": "#CC334D"
+              },
+              "default": "#5D7083"
+            },
+            "label": {
+              "field": "nome",
+              "maxScaleDenominator": 10000
+            }
+          },
+          "popup": {
+            "title": "{nome}",
+            "fields": [
+              {
+                "field": "stato",
+                "label": "Stato"
+              },
+              {
+                "field": "velocita",
+                "label": "Velocità",
+                "suffix": " km/h",
+                "decimals": 0
+              },
+              {
+                "field": "heading",
+                "label": "Direzione",
+                "suffix": "°",
+                "decimals": 0
+              }
+            ]
+          },
+          "metadata": {
+            "abstract": "Dati generati dal raccoglitore in modalità demo, per provare il framework.",
+            "source": "collector.php (tipo demo)",
+            "license": "—"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ambiente",
+      "title": "Ambiente e sensori",
+      "expanded": false,
+      "layers": [
+        {
+          "id": "meteo",
+          "title": "Stazioni meteo",
+          "source": "meteo",
+          "interval": 300,
+          "crs": "EPSG:4326",
+          "themes": [
+            "Ambiente"
+          ],
+          "style": {
+            "radius": 8,
+            "colorBy": {
+              "field": "temperatura",
+              "ranges": [
+                {
+                  "max": 0,
+                  "color": "#0066CC"
+                },
+                {
+                  "min": 0,
+                  "max": 15,
+                  "color": "#00A0B0"
+                },
+                {
+                  "min": 15,
+                  "max": 28,
+                  "color": "#E5A00D"
+                },
+                {
+                  "min": 28,
+                  "color": "#CC334D"
+                }
+              ],
+              "default": "#5D7083"
+            },
+            "label": {
+              "field": "temperatura",
+              "maxScaleDenominator": 50000
+            }
+          },
+          "popup": {
+            "title": "{nome}",
+            "fields": [
+              {
+                "field": "temperatura",
+                "label": "Temperatura",
+                "suffix": " °C",
+                "decimals": 1
+              },
+              {
+                "field": "umidita",
+                "label": "Umidità",
+                "suffix": " %",
+                "decimals": 0
+              },
+              {
+                "field": "vento",
+                "label": "Vento",
+                "suffix": " km/h",
+                "decimals": 0
+              }
+            ]
+          },
+          "metadata": {
+            "abstract": "Misure delle stazioni meteorologiche (esempio: da collegare alla fonte reale).",
+            "source": "Da definire",
+            "license": "Da definire"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+# configurazione reale (contiene URL interni, chiavi, token): resta solo sul server
+collector/sources.json
+# dati e log del raccoglitore
+cache/
+*.geojson
+*.log
+*.log.1
+.collector.lock
+# credenziali eventuali (es. bus_db.ini del servizio bus)
+*.ini
+!lizmap-module/**/*.ini
+.DS_Store

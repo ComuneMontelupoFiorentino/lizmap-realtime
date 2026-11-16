@@ -1,0 +1,28 @@
+# Servizio systemd per il raccoglitore dei livelli in tempo reale.
+# Installazione:
+#   sudo cp lizmap-realtime-collector.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now lizmap-realtime-collector
+# Log:  journalctl -u lizmap-realtime-collector -f
+
+[Unit]
+Description=Lizmap - raccoglitore livelli in tempo reale
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+ExecStart=/usr/bin/php /opt/lizmap-realtime/collector.php --loop --config=/opt/lizmap-realtime/sources.json
+Restart=always
+RestartSec=10
+# protezioni: il servizio può scrivere solo nella cartella di cache
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/lizmap-realtime
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

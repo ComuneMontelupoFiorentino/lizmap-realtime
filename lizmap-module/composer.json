@@ -1,0 +1,22 @@
+{
+    "name": "lizmap-realtime/lizmap-realtime-module",
+    "type": "jelix-module",
+    "description": "Modulo Lizmap per livelli in tempo reale con i permessi di Lizmap",
+    "license": "MPL-2.0",
+    "require": {},
+    "extra": {
+        "jelix": {
+            "modules": [
+                "realtime/"
+            ],
+            "autoconfig-access-16": {
+                "lizmap@3liz.com": {
+                    "realtime": {
+                        "__global": 1,
+                        "index": 2
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+  "cache_dir": "/var/lib/lizmap-realtime/cache",
+  "timezone": "Europe/Rome",
+  "user_agent": "lizmap-realtime-collector/1.0 (Comune - WebGIS)",
+  "verbose": false,
+
+  "sources": {
+    "demo": {
+      "type": "demo",
+      "interval": 10,
+      "center": [10.9963, 43.7225],
+      "count": 8,
+      "radius_m": 1500
+    },
+
+    "meteo": {
+      "type": "custom",
+      "script": "sources/meteo_openmeteo.php",
+      "interval": 900,
+      "points": [
+        { "nome": "Montelupo centro", "lon": 10.9963, "lat": 43.7225 },
+        { "nome": "Fibbiana",         "lon": 10.9789, "lat": 43.7325 },
+        { "nome": "Samminiatello",    "lon": 11.0101, "lat": 43.7300 }
+      ]
+    },
+
+    "bus_geojson": {
+      "type": "geojson",
+      "disabled": true,
+      "interval": 15,
+      "url": "http://127.0.0.1/lizmap/prosit/tpl_realtime/bus.php?format=geojson",
+      "timeout": 10,
+      "properties": ["linea", "colore", "destinazione", "heading", "stato"]
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "statusBar": true,
+  "defaults": { "interval": 300, "crs": "EPSG:4326", "visible": false },
+  "groups": [
+    {
+      "id": "ambiente_rt",
+      "title": "Ambiente in tempo reale",
+      "expanded": true,
+      "layers": [
+        {
+          "id": "aria",
+          "title": "Qualità dell'aria",
+          "source": "aria",
+          "visible": true,
+          "maxScaleDenominator": 100000,
+          "themes": ["Ambiente"],
+          "style": {
+            "radius": 8,
+            "colorBy": {
+              "field": "pm10",
+              "ranges": [
+                { "max": 25, "color": "#008055" },
+                { "min": 25, "max": 50, "color": "#E5A00D" },
+                { "min": 50, "color": "#CC334D" }
+              ],
+              "default": "#5D7083"
+            },
+            "label": { "field": "pm10", "maxScaleDenominator": 25000 }
+          },
+          "popup": {
+            "title": "{nome}",
+            "fields": [
+              { "field": "pm10", "label": "PM10", "suffix": " µg/m³", "decimals": 0 },
+              { "field": "no2", "label": "NO₂", "suffix": " µg/m³", "decimals": 0 }
+            ]
+          },
+          "metadata": {
+            "abstract": "Centraline di misura della qualità dell'aria (esempio).",
+            "source": "Da definire",
+            "license": "Da definire"
+          }
+        },
+        {
+          "id": "livelli_idrometrici",
+          "title": "Idrometri",
+          "source": "idrometri",
+          "groups": ["protezione_civile"],
+          "interval": 600,
+          "staleAfter": 3600,
+          "statusBar": true,
+          "style": {
+            "radius": 7,
+            "colorBy": { "field": "allerta", "values": { "0": "#008055", "1": "#E5A00D", "2": "#CC334D" }, "default": "#5D7083" }
+          },
+          "popup": {
+            "title": "{stazione}",
+            "fields": [
+              { "field": "livello", "label": "Livello", "suffix": " m", "decimals": 2 },
+              { "field": "allerta", "label": "Allerta", "map": { "0": "nessuna", "1": "attenzione", "2": "allarme" } }
+            ]
+          },
+          "metadata": {
+            "abstract": "Livelli dei corsi d'acqua, visibili solo al gruppo protezione_civile (esempio).",
+            "source": "Da definire"
+          }
+        }
+      ]
+    }
+  ]
+}
