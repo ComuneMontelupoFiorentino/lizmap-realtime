@@ -83,6 +83,14 @@ Dettagli, variante con systemd e verifiche: [docs/installazione.md](docs/install
 - un crontab utente **oppure** systemd (per tenere attivo il raccoglitore);
 - nel repository Lizmap, l'opzione per i JavaScript personalizzati attiva.
 
+## Parte di Prosit
+
+Questo componente fa parte di **[Prosit](https://github.com/ComuneMontelupoFiorentino/prosit)**,
+il Sistema Informativo Territoriale del Comune di Montelupo Fiorentino. Nel repository
+[prosit](https://github.com/ComuneMontelupoFiorentino/prosit) ci sono l'architettura, l'elenco
+di tutti i componenti (topic [`prosit`](https://github.com/search?q=org%3AComuneMontelupoFiorentino+topic%3Aprosit&type=repositories))
+e le versioni che funzionano insieme.
+
 ## Licenza
 
 [Mozilla Public License 2.0](LICENSE), la stessa di Lizmap Web Client.
